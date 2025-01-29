@@ -1,3 +1,7 @@
+---
+import Header from '../components/Header.astro'
+import SocialMediaBox from '../components/SocialMediaBox.astro'
+---
 <!doctype html>
 <html lang="en">
 	<head>
@@ -8,7 +12,11 @@
 		<title>Astro Basics</title>
 	</head>
 	<body>
-		<slot />
+		<Header/>
+		<main>
+			<slot />
+		</main>
+		<SocialMediaBox />
 	</body>
 </html>
 
@@ -18,5 +26,10 @@
 		margin: 0;
 		width: 100%;
 		height: 100%;
+		position: relative;
+	}
+	main {
+		margin: 140px 250px 0px 250px;
+		
 	}
 </style>

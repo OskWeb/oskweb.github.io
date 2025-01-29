@@ -1,0 +1,127 @@
+---
+interface Language {
+    language: string;
+}
+
+interface ProjectCardProps {
+    title: string;
+    description: string;
+    link: string;
+    languages: Language[]
+}
+
+const { title, description, link, languages = [] } = Astro.props as ProjectCardProps;
+
+---
+
+<div class="project_card">
+                    
+    <div class="project-info">
+        <span class="project-title">{title}</span>
+        <p>
+            {description}
+        </p>
+        <div class="languages">
+            {
+                languages.length > 0 && (
+                    languages.map(({ language }) => (
+                        <div class="language">
+                            <div class="circle"></div>
+                            <span>{language}</span>
+                        </div>
+                    ))
+                )
+            }
+        </div>
+    </div>
+    <img class="backgroundImage" src="/src/assets/pexels-tarasov_film_ph-162805844-25381428.jpg" alt=""/>
+    <div class="arrowRight">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+    </div>
+</div>
+
+<style>
+    .project_card {
+        width: 650px;
+        height: 200px;
+        border-radius: 5px;
+        border: 2px solid #848484;
+        position: relative;
+        overflow: hidden;
+    }
+    .project_card .backgroundImage {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 650px;
+        height: 200px;
+        z-index: -1;
+    }
+    .project-title {
+        font-size: 14px;
+    }
+    .project-info {
+        width: 305px;
+        font-size: 13px;
+        border-radius: 5px 0px 5px 0px;
+        padding: 20px;
+        background-color: #1E1E1E;
+    }
+    .languages {
+        display: flex;
+        gap: 20px;
+    }
+    .languages .language {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        font-size: 11px;
+    }
+    .languages .language .circle {
+        background-color: greenyellow;
+        width: 10px;
+        height: 10px;
+        border-radius: 50px;
+    }
+    .arrowRight {
+        display: none;
+        position: absolute;
+        top: 0;
+        right: -100px;
+        width: 100px;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--gray-color-1);
+        transition: all 300ms;
+    }
+    .arrowRight svg {
+        width: 20px;
+        height: 20px;
+    }
+    .project_card:hover .arrowRight{
+        right: 0;
+    }
+    @media (max-width: 1160px) {
+        .project_card {
+            width: 100%;
+            height: 140px;
+            display: flex;
+        }
+        .project_card img {
+            display: none;
+        }
+        .project_card .arrowRight {
+            width: 50px;
+            height: 30px;
+            background-color: white;
+            border-radius: 0px 5px 0px 5px;
+        }
+        .project_card .project-info {
+            width: 100%;
+        }
+        
+        
+    }
+</style>

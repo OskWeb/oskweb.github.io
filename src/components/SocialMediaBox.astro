@@ -1,0 +1,56 @@
+---
+import '/src/styles/global.css'
+---
+<div class="socialMediaBox">
+    <ul>
+       <li>
+            <a href="https://github.com/OskWeb" target="_blank">Git</a>
+        </li>
+        <li>
+            <a href="https://www.linkedin.com/in/%C3%B3scar-aranda-n%C3%BA%C3%B1ez-67a860234/" target="_blank">In</a>
+        </li>
+        <li>
+            <a href="mailto:oscararnu18@gmail.com" target="_blank">Mail</a>
+        </li>
+        <div class="socialMediaIndicator"></div>
+    </ul>
+</div>
+<style>
+    .socialMediaBox {
+        position: absolute;
+        top: 50%;
+        right: 50px; 
+    }
+    .socialMediaBox ul {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+    }
+    .socialMediaBox .socialMediaIndicator {
+        position: absolute;
+        width: 5px;
+        height: 5px;
+        background-color: #333333;
+        top: 5px;
+        left: 10px;
+        transition: transform 0.3s ease;
+    }
+    .socialMediaBox ul li {
+        position: relative;
+        list-style: none;
+    }
+    .socialMediaBox ul li a {
+        text-decoration: none;
+        color: var(--grey-color-2);
+    }
+    .socialMediaBox ul li:nth-child(1):hover ~ .socialMediaIndicator {
+        transform: translateY(0);
+    }
+    .socialMediaBox ul li:nth-child(2):hover ~ .socialMediaIndicator {
+        transform: translateY(80px);
+    }
+    .socialMediaBox ul li:nth-child(3):hover ~ .socialMediaIndicator {
+        transform: translateY(160px);
+    }
+</style>

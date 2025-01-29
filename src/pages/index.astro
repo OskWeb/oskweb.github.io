@@ -1,13 +1,7 @@
 ---
-import OpenPage from '../components/OpenPage.astro';
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+const preferredLanguage = Astro.request.headers.get('accept-language')?.split(',')[0]?.slice(0, 2) || 'en';
+const validLanguages = ['en','es','fr','de','nl'];
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const lang = validLanguages.includes(preferredLanguage) ? preferredLanguage : 'en';
+Astro.redirect(`/${lang}`);
 ---
-
-<Layout>
-	<!-- <Welcome /> -->
-	 <OpenPage/>
-</Layout>

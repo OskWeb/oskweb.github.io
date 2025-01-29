@@ -1,0 +1,126 @@
+---
+import ProjectCard from '../../components/ProjectCard.astro';
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import "@fontsource-variable/raleway";
+
+import { getCollection } from 'astro:content';
+
+export const getStaticPaths = async () => {
+  const projects = await getCollection("projects");
+
+  const paths = projects.map((page) => ({
+    params: {
+      lang: page.data.lang,
+    },
+  }));;
+  
+  console.log(paths);
+  return paths;
+};
+
+const { lang } = Astro.params;
+
+const projectsPage = await getCollection("projects");
+const currentPage = projectsPage.find((p) => p.data.lang === lang);
+
+if(!currentPage) {
+    throw new Error(`No se encontró la página de proyectos para el idioma: ${lang}`);
+}
+
+const { data } = currentPage;
+const { projects, title, description } = data;
+
+
+---
+<Layout>
+    <div class="projects">
+        <div class="projects-info">
+            <div class="left-info">
+                <span class="section-title">{title}</span>
+                <p class="text-description">{description}</p>
+            </div>
+                <div class="right-info">
+                    <a href="https://github.com/OskWeb" target="_blank" class="githubPage">
+                        <div class="linkContent">
+                            <img src="https://avatars.githubusercontent.com/u/126467576?s=400&v=4" alt="">
+                            <div class="username">
+                                <span>Oscar Aranda</span>
+                                <span>OskWeb</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="projects_wrap">
+                {projects.map((project) => {
+                    return <ProjectCard 
+                        title={project.title}
+                        description={project.description}
+                        link={project.link}
+                        languages={project.languages}
+                    />
+                })}
+            </div>
+        </div>
+    </div>
+    
+</Layout>
+
+<style>
+    .projects {
+        display: flex;
+        flex-direction: column;
+    }
+    .projects-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 50px;
+        
+    }
+    .projects_wrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    .left-info {
+        width: 600px;
+    }
+    .githubPage {
+        text-decoration: none;
+    }
+    .githubPage .linkContent {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+    }
+    .githubPage .linkContent img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50px;
+    }
+    .githubPage .linkContent .username {
+        display: flex;
+        flex-direction: column;
+    }
+    .githubPage .linkContent .username span:nth-child(1) {
+        font-size: 16px;
+        color: white;
+    }
+    .githubPage .linkContent .username span:nth-child(2) {
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.85);
+        font-weight: 200;
+    }
+
+    @media (max-width: 1160px) {
+        .left-info {
+            width: 100%;
+        }
+        .githubPage .linkContent {
+            display: none;
+        }
+    }
+</style>

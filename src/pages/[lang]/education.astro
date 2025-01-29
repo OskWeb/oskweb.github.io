@@ -1,0 +1,77 @@
+---
+import { getCollection } from "astro:content";
+import EducationCard from "../../components/EducationCard.astro";
+import Layout from "../../layouts/Layout.astro";
+import '../../styles/global.css';
+import "@fontsource-variable/raleway";
+
+export const getStaticPaths = async () => {
+  const contacts = await getCollection("education");
+
+  const paths = contacts.map((page) => ({
+    params: {
+      lang: page.data.lang,
+    },
+  }));;
+  
+  console.log(paths);
+  return paths;
+};
+
+const { lang } = Astro.params;
+
+const education = await getCollection("education");
+
+const currentPage = education.find((p) => p.data.lang === lang);
+
+if(!currentPage) {
+	throw new Error(`Page not found for ${lang}/contact`)
+}
+
+const { data } = currentPage;
+
+const { title, description, training} = data;
+---
+
+<Layout>
+    <div class="education">
+        <div class="content-education">
+            <div class="education-info">
+                <h2>{title}</h2>
+                <p>{description}</p>
+            </div>
+            <div class="education_wrap">
+                {
+                    training.length > 0 && (
+                        training.map((t) => (
+                        <EducationCard 
+                            name={t.name} 
+                            school={t.school} 
+                            from={t.from} 
+                            to={t.to}
+                            description={t.description}
+                            skills={t.skills}
+                        />
+                        ))
+                    )
+                    
+                }
+               
+                
+            </div>
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .education {
+        display: flex;
+    }
+    .education_wrap {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        gap: 20px;
+    }
+    
+</style>

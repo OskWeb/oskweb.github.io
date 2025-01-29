@@ -1,0 +1,129 @@
+---
+import  { LanguageSelector }  from "./LanguageSelector";
+import Logo from "./Logo.astro";
+import { SwitchDayNight } from "./SwitchDayNight";
+import '../styles/global.css';
+import "@fontsource-variable/raleway";
+import { getRelativeLocaleUrl } from "astro:i18n";
+
+const languages = {
+  en: "English",
+  es: "Spanish",
+  fr: "French",
+  de: "German",
+  nl: "Dutch",
+};
+
+const { lang } = Astro.params;
+
+let currentUrl = Astro.url.pathname.replace(/https?:\/\/[^/]+/, "")  // Elimina el dominio
+                      .replace(/^\/[^/]+\//, "/")  // Elimina el idioma
+                      .replace(/\/$/, "") || "/";  // Elimina barra final si existe
+
+if(!currentUrl) {
+    currentUrl = "/";
+}
+
+console.log("url: " + currentUrl);
+
+---
+<div class="header">
+    <Logo/>
+    <div class="navbar">
+        <nav>
+            <ul>
+                <li>
+                    <a href={getRelativeLocaleUrl(lang || 'en', '')}
+                        class={currentUrl == '/' ? 'line-extended' : 'line-closed'}
+                    >
+                    About me</a>
+                </li>
+                <li>
+                    <a href={getRelativeLocaleUrl(lang || 'en', 'projects')}
+                    class={currentUrl == '/projects' ? 'line-extended' : 'line-closed'}
+                    >Projects</a>
+                </li>
+                <li>
+                    <a href={getRelativeLocaleUrl(lang || 'en', 'education')}
+                    class={currentUrl == '/education' ? 'line-extended' : 'line-closed'}
+                >Education</a>
+                </li>
+                <li>
+                    <a href={getRelativeLocaleUrl(lang || 'en', 'contact')}
+                    class={currentUrl == '/contact' ? 'line-extended' : 'line-closed'}
+                >Contact</a>
+                </li>
+            </ul>
+        </nav>
+        <SwitchDayNight client:visible />
+        <LanguageSelector client:visible languages={languages}, currentUrl={currentUrl}, initialLang={lang}/>
+    </div>
+</div>
+
+<style>
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 150px;
+        margin: 0px 50px 0px 50px;
+    }
+    .header .navbar {
+        display: flex;
+        gap: 20px;
+    }
+    .header .navbar nav ul {
+        display: flex;
+        list-style: none;
+        gap: 20px;
+    }
+    .header .navbar nav ul li a {
+        color: #848484;
+        text-decoration: none;
+        font-size: 16px;
+    }
+    .switchDayNight-box {
+        background-color: brown;
+    }
+    .header .navbar nav ul li {
+        position: relative;
+    }
+    .line-extended {
+        position: relative;
+    }
+    .line-extended::after {
+        position: absolute;
+        display: block;
+        content: '';
+        bottom: -10px;
+        left: 0;
+        width: 30px;
+        height: 3px;
+        background-color: var(--navbar-hover-color);
+    }
+    .line-closed {
+        position: relative;
+    }
+    .line-closed::after {
+        position: absolute;
+        display: block;
+        content: '';
+        bottom: -10px;
+        left: 0;
+        width: 5px;
+        height: 3px;
+        background-color: var(--navbar-hover-color);
+        transition: all 300ms ease;
+    }
+    .line-closed:hover::after {
+        width: 30px;
+    }
+    .language-selector {
+        display: flex;
+    }
+    .language-selector svg {
+        width: 10px;
+        height: 10px;
+        fill: white;
+    }
+</style>

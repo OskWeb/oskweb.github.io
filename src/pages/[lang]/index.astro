@@ -1,0 +1,63 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import '../../styles/global.css';
+import "@fontsource-variable/raleway";
+import { getCollection } from "astro:content";
+
+const { lang } = Astro.params;
+
+export const getStaticPaths = async () => {
+  const pages = await getCollection("about");
+
+  return pages.map((page) => ({
+    params: {
+      lang: page.data.lang,
+    },
+  }));
+};
+
+const about = await getCollection("about");
+
+const currentPage = about.find((p) => p.data.lang === lang);
+
+if(!currentPage) {
+	throw new Error(`Page not found for ${lang}/about`)
+}
+
+const { data } = currentPage;
+---
+
+<Layout>
+	<div class="aboutMe">
+		<div class="description">
+			<!-- <h2 class="section-title">Hello,</h2>
+			<h2 class="section-title">My name is Oscar</h2> -->
+			<h2 class="section-title">
+				{data.title}
+			</h2>
+			<div class="text-description">
+				{data.description}
+				<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar et consectetur quam integer sit blandit nulla. Metus magna erat pretium a, tincidunt vitae. </p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar et consectetur quam integer sit blandit nulla. Metus magna erat pretium a, tincidunt vitae. </p> -->
+			</div>
+			<span class="resume">{data.resume}</span>
+		</div>
+		<div class="boxImages">
+			<img src="/src/assets/pexels-tarasov_film_ph-162805844-25381428.jpg" alt=""/>
+		</div>
+	</div>
+</Layout>
+
+<style>
+	.aboutMe {
+		display: flex;
+		gap: 170px;
+	}
+	.resume {
+		text-decoration: underline;
+	}
+	img {
+		width: 400px;
+		height: 400px;
+	}
+</style>

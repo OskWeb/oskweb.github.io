@@ -1,0 +1,68 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Footer from "../../components/Footer.astro";
+import { ContactForm } from "../../components/ContactForm";
+import { getCollection } from "astro:content";
+import '../../styles/global.css';
+import "@fontsource-variable/raleway";
+
+export const getStaticPaths = async () => {
+  const contacts = await getCollection("contact");
+
+  const paths = contacts.map((page) => ({
+    params: {
+      lang: page.data.lang,
+    },
+  }));;
+  
+  console.log(paths);
+  return paths;
+};
+
+const { lang } = Astro.params;
+
+const contact = await getCollection("contact");
+
+const currentPage = contact.find((p) => p.data.lang === lang);
+
+if(!currentPage) {
+	throw new Error(`Page not found for ${lang}/contact`)
+}
+
+const { data } = currentPage;
+---
+
+<Layout>
+    <div class="contact-section">
+        <div class="contact">
+            <div class="contact-info">
+                <h1>{data.title}</h1>
+                <p>{data.description}</p> 
+            </div>
+            <div class="contact-form">
+                <ContactForm client:load/>
+            </div>
+        </div>
+        <Footer />
+    </div>
+</Layout>
+
+<style>
+    .contact-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: calc(100vh - 150px - 140px);
+    }
+    .contact {
+        width: min-content;
+    }
+    .contact .contact-info{
+        width: 100%;
+    }
+    @media (max-width: 1160px) {
+        .contact {
+            width: 100%;
+        }
+    }
+</style>

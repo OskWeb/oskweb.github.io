@@ -9,6 +9,11 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^5.1.2"
+    "@astrojs/react": "^4.1.5",
+    "@emailjs/browser": "^4.4.1",
+    "@fontsource-variable/raleway": "^5.1.1",
+    "astro": "^5.1.2",
+    "formik": "^2.4.6",
+    "yup": "^1.6.1"
   }
 }
