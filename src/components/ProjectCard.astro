@@ -15,29 +15,35 @@ const { title, description, link, languages = [] } = Astro.props as ProjectCardP
 ---
 
 <div class="project_card">
-                    
-    <div class="project-info">
-        <span class="project-title">{title}</span>
-        <p>
-            {description}
-        </p>
-        <div class="languages">
-            {
-                languages.length > 0 && (
-                    languages.map(({ language }) => (
-                        <div class="language">
-                            <div class="circle"></div>
-                            <span>{language}</span>
-                        </div>
-                    ))
-                )
-            }
+    <a href={link}>
+        
+        <div class="project-info">
+            <span class="project-title">{title}</span>
+            <p>
+                {description}
+            </p>
+            <div class="languages">
+                {
+                    languages.length > 0 && (
+                        languages.map(({ language }) => (
+                            <div class="language">
+                                <div class="circle"></div>
+                                <span>{language}</span>
+                            </div>
+                        ))
+                    )
+                }
+            </div>
         </div>
-    </div>
-    <img class="backgroundImage" src="/src/assets/pexels-tarasov_film_ph-162805844-25381428.jpg" alt=""/>
-    <div class="arrowRight">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
-    </div>
+        <img class="backgroundImage" src="/src/assets/pexels-tarasov_film_ph-162805844-25381428.jpg" alt=""/>
+        <div class="arrowRight">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"/></svg>
+        </div>
+    </a>                
+    
+    
+
+   
 </div>
 
 <style>
@@ -99,6 +105,7 @@ const { title, description, link, languages = [] } = Astro.props as ProjectCardP
     .arrowRight svg {
         width: 20px;
         height: 20px;
+
     }
     .project_card:hover .arrowRight{
         right: 0;
@@ -116,7 +123,10 @@ const { title, description, link, languages = [] } = Astro.props as ProjectCardP
             width: 50px;
             height: 30px;
             background-color: white;
-            border-radius: 0px 5px 0px 5px;
+            border-radius: 0px 0px 0px 5px;
+        }
+        .project_card .arrowRight svg {
+            fill: black;
         }
         .project_card .project-info {
             width: 100%;

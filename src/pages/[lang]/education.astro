@@ -1,6 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import EducationCard from "../../components/EducationCard.astro";
+import CertificationCard from "../../components/CertificationCard.astro";
 import Layout from "../../layouts/Layout.astro";
 import '../../styles/global.css';
 import "@fontsource-variable/raleway";
@@ -30,7 +31,8 @@ if(!currentPage) {
 
 const { data } = currentPage;
 
-const { title, description, training} = data;
+const { title, description, training, titleCertifications, descriptionCertifications, certifications} = data;
+console.log("Certificaciones", certifications);
 ---
 
 <Layout>
@@ -44,20 +46,36 @@ const { title, description, training} = data;
                 {
                     training.length > 0 && (
                         training.map((t) => (
-                        <EducationCard 
-                            name={t.name} 
-                            school={t.school} 
-                            from={t.from} 
-                            to={t.to}
-                            description={t.description}
-                            skills={t.skills}
-                        />
+                            <EducationCard 
+                                name={t.name} 
+                                school={t.school} 
+                                from={t.from} 
+                                to={t.to}
+                                description={t.description}
+                                skills={t.skills}
+                            />
                         ))
                     )
-                    
                 }
-               
-                
+            </div>
+            
+        </div>
+        <div class="content-courses">
+            <div class="courses-info">
+                <h2>{titleCertifications}</h2>
+                <p>{descriptionCertifications}</p>
+            </div>
+            <div class="courses_wrap">
+                {
+                    certifications.length > 0 && (
+                        certifications.map((t) => (
+                            <CertificationCard 
+                                 name={t.name}
+                                 taughtBy={t.taughtBy}
+                             />
+                        ))
+                    )
+                }
             </div>
         </div>
     </div>
@@ -66,12 +84,24 @@ const { title, description, training} = data;
 <style>
     .education {
         display: flex;
+        flex-direction: column;
+        gap: 50px;
     }
-    .education_wrap {
+    .education .content-education .education-info h2 {
+        font-size: 24px;
+    }
+    .education .content-education .education-info p {
+        color: var(--gray-color-1);
+    }
+    .education .content-education .education_wrap {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
+        margin-top: 20px;
         gap: 20px;
     }
+    .education .content-courses .courses-info p {
+        color: var(--gray-color-1);
+    }   
     
 </style>

@@ -13,6 +13,7 @@
     "@emailjs/browser": "^4.4.1",
     "@fontsource-variable/raleway": "^5.1.1",
     "astro": "^5.1.2",
+    "dompurify": "^3.2.4",
     "formik": "^2.4.6",
     "yup": "^1.6.1"
   }

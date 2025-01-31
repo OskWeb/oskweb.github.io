@@ -1,0 +1,134 @@
+---
+
+import '../styles/global.css';
+import "@fontsource-variable/raleway";
+
+interface JobDescription {
+    jobDescription: string;
+}
+
+interface CompanyCard {
+    company: string;
+    position: string;
+    jobDescriptions: JobDescription[];
+    fromTo: string;
+    location: string;
+}
+
+const { company, position, jobDescriptions, fromTo, location } = Astro.props as CompanyCard;
+
+---
+
+<div class="companyCard">
+    <div class="timeline">
+        <span class="point"></span>
+        <span class="line"></span>
+    </div>
+    <div class="content">
+        <div class="company-location-group">
+            <span class="company">{company}</span>
+            <div class="location">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"/></svg>
+                <span>{location}</span>
+            </div>
+            
+        </div>
+        <div class="position">
+            <span>{position}</span>
+        </div>
+        <div class="fromTo">
+            <span>{fromTo}</span>
+        </div>
+        <div class="jobDescriptions">
+            {
+                jobDescriptions.map((jobDescription) => (
+                    <p class="jobDescription">{jobDescription.jobDescription}</p>
+                ))
+            }
+        </div>
+    </div>
+    
+</div>
+<style>
+    .companyCard {
+        display: flex;
+        /* border: 1px solid gray; */
+        
+        padding-left: 20px;
+    }
+    .companyCard .timeline {
+        position: relative;
+    }
+    .companyCard .timeline .point {
+        position: absolute;
+        width: 13px;
+        height: 13px; 
+        border-radius: 50px;
+        top: 8px;
+        left: -25px;
+        border: 2px solid var(--gray-color-1);
+        background-color: var(--navbar-hover-color);
+        z-index: 2;
+    }
+    .companyCard .timeline .line {
+        position: absolute;
+        width: 3px;
+        height: 100%;
+        left: -20px;
+        background-color: var(--gray-color-1);
+    }
+    .companyCard .content {
+        padding-bottom: 20px;
+    }
+    .companyCard .company-location-group {
+        display: flex;
+        align-items: flex-end;
+    }
+
+    .companyCard .company-location-group .company {
+        border-right: 2px solid var(--gray-color-1);
+        padding-right: 10px;
+        font-size: 22px;
+        font-weight: bold;
+    }
+    .companyCard .company-location-group .location {
+        display: flex;
+        gap: 5px;
+        align-items: flex-end;
+        padding-left: 10px;
+    }
+    .companyCard .company-location-group .location svg {
+        width: 10px;
+    }
+
+    .companyCard .position {
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--gray-color-1);
+    }
+    .companyCard .fromTo {
+        font-size: 18px;
+    }
+    .companyCard .jobDescriptions {
+        color: var(--gray-color-1);
+        margin-top: 20px;
+    }
+    .companyCard .jobDescriptions .jobDescription {
+        position: relative;
+        margin-left: 30px;
+        margin-bottom: 10px;
+    }
+    .companyCard .jobDescriptions .jobDescription::before {
+        position: absolute;
+        top: 3px;
+        left: -30px;
+        content: '';
+        width: 10px;
+        height: 10px;
+        background-color: var(--gray-color-1);
+    }
+
+
+
+
+</style>

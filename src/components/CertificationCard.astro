@@ -1,0 +1,63 @@
+---
+import { skillColorAssociate } from '../utils/skillsColors';
+import '/src/styles/global.css';
+
+interface Skill {
+    skill: string;
+}
+interface CertificationCardProps {
+    name: string;
+    taughtBy: string;
+    
+}
+
+const { name, taughtBy } = Astro.props as CertificationCardProps;
+
+---
+
+<div class="certificationCard">
+    <h2 class="certificationTitle">{name}</h2>
+    <h2 class="taughtBy">{taughtBy}</h2>
+    <div class="titleLine"></div>   
+</div>
+
+<style>
+    .certificationCard {
+        width: 100%;
+        height: auto;
+        border-bottom: 1px solid var(--gray-color-1);
+        padding: 36px;
+    }
+    
+    
+    .certificationCard .certificationTitle {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 50px;
+        font-size: 22px;
+        font-weight: bold;
+        margin: 0;
+    }
+    .certificationCard .taughtBy {
+        font-size: 18px;
+        color: var(--gray-color-1);
+    }
+    /* .titleLine {
+        width: 700px;
+        height: 2px;
+        background-color: white;
+    } */
+    
+    .certificationCard .content .SchoolName {
+        font-size: 20px;
+        font-weight: bold;
+        color: var(--gray-color-1);
+        margin: 0;
+    }
+    
+    
+
+    
+
+</style>

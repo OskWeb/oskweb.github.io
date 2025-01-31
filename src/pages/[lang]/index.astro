@@ -1,4 +1,5 @@
 ---
+import ExperienceCompanyCard from '../../components/ExperienceCompanyCard.astro';
 import Layout from '../../layouts/Layout.astro';
 import '../../styles/global.css';
 import "@fontsource-variable/raleway";
@@ -29,35 +30,69 @@ const { data } = currentPage;
 
 <Layout>
 	<div class="aboutMe">
-		<div class="description">
-			<!-- <h2 class="section-title">Hello,</h2>
-			<h2 class="section-title">My name is Oscar</h2> -->
-			<h2 class="section-title">
-				{data.title}
-			</h2>
-			<div class="text-description">
-				{data.description}
-				<!-- <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar et consectetur quam integer sit blandit nulla. Metus magna erat pretium a, tincidunt vitae. </p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pulvinar et consectetur quam integer sit blandit nulla. Metus magna erat pretium a, tincidunt vitae. </p> -->
+		<div class="profile">
+			<div class="description">
+				<h2 class="section-title">
+					{data.title}
+				</h2>
+				<div class="text-description">
+					{data.description}
+				</div>
+				<a class="resume" aria-label="Download my resume" href="/src/resume/CV_Oscar_Aranda_2024_EN.pdf" target="_blank" download>{data.resume}</a>
 			</div>
-			<span class="resume">{data.resume}</span>
+			<div class="boxImages">
+				<img src="/src/assets/photo_2025-01-31_20-06-15.jpg" alt=""/>
+			</div>
 		</div>
-		<div class="boxImages">
-			<img src="/src/assets/pexels-tarasov_film_ph-162805844-25381428.jpg" alt=""/>
+		<div class="experience">
+			<h2 class="section-title">
+				{data.experience}
+			</h2>
+			<div class="experience_wrap">
+				{data.companies.map((company) => (
+					<ExperienceCompanyCard 
+						company={company.company}
+						position={company.position}
+						jobDescriptions={company.jobDescriptions}
+						fromTo={company.fromTo}
+						location={company.location}
+					/>
+				))}
+			</div>
 		</div>
+		
 	</div>
 </Layout>
 
 <style>
-	.aboutMe {
+	.aboutMe .profile{
 		display: flex;
-		gap: 170px;
+		gap: 80px;
+	}
+	.aboutMe .profile .description {
+		display: flex;
+		flex-direction: column;
+		gap: 15px;
 	}
 	.resume {
 		text-decoration: underline;
+		color: white;
 	}
 	img {
 		width: 400px;
 		height: 400px;
+		object-fit: cover;
+	}
+	.aboutMe .experience {
+		margin-top: 100px;
+	}
+	.aboutMe .experience .experience_wrap {
+		margin-top: 20px;
+	}
+
+	@media (max-width: 750px) {
+		.aboutMe .profile {
+			flex-direction: column;
+		}
 	}
 </style>

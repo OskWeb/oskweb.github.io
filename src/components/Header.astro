@@ -1,10 +1,11 @@
 ---
 import  { LanguageSelector }  from "./LanguageSelector";
-import Logo from "./Logo.astro";
 import { SwitchDayNight } from "./SwitchDayNight";
 import '../styles/global.css';
 import "@fontsource-variable/raleway";
 import { getRelativeLocaleUrl } from "astro:i18n";
+import { ButtonBurguer } from "./ButtonBurguer";
+
 
 const languages = {
   en: "English",
@@ -26,52 +27,78 @@ if(!currentUrl) {
 
 console.log("url: " + currentUrl);
 
+
 ---
-<div class="header">
-    <Logo/>
-    <div class="navbar">
-        <nav>
-            <ul>
-                <li>
-                    <a href={getRelativeLocaleUrl(lang || 'en', '')}
-                        class={currentUrl == '/' ? 'line-extended' : 'line-closed'}
-                    >
-                    About me</a>
-                </li>
-                <li>
-                    <a href={getRelativeLocaleUrl(lang || 'en', 'projects')}
-                    class={currentUrl == '/projects' ? 'line-extended' : 'line-closed'}
-                    >Projects</a>
-                </li>
-                <li>
-                    <a href={getRelativeLocaleUrl(lang || 'en', 'education')}
-                    class={currentUrl == '/education' ? 'line-extended' : 'line-closed'}
-                >Education</a>
-                </li>
-                <li>
-                    <a href={getRelativeLocaleUrl(lang || 'en', 'contact')}
-                    class={currentUrl == '/contact' ? 'line-extended' : 'line-closed'}
-                >Contact</a>
-                </li>
-            </ul>
-        </nav>
-        <SwitchDayNight client:visible />
-        <LanguageSelector client:visible languages={languages}, currentUrl={currentUrl}, initialLang={lang}/>
+
+<script>
+    window.addEventListener("toggle-menu", (event) => {
+        const customEvent = event as CustomEvent<boolean>;
+        const header = document.querySelector("header");
+       
+        if (header) {
+            if(customEvent.detail) {
+                header.classList.remove("menu-open");
+            } else {
+                header.classList.add("menu-open");
+                
+               
+            }
+        }
+        
+    })
+</script>
+
+<header class="header">
+    <div class="contentBox">
+        <div class="logo">
+            <span>Oscar</span>
+            <span>Aranda</span>
+        </div>
+        
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li>
+                        <a href={getRelativeLocaleUrl(lang || 'en', '')} class={currentUrl == '/' ? 'line-extended' : 'line-closed'}>About me</a>
+                    </li>
+                    <li>
+                        <a href={getRelativeLocaleUrl(lang || 'en', 'projects')} class={currentUrl == '/projects' ? 'line-extended' : 'line-closed'}>Projects</a>
+                    </li>
+                    <li>
+                        <a href={getRelativeLocaleUrl(lang || 'en', 'education')} class={currentUrl == '/education' ? 'line-extended' : 'line-closed'}>Education</a>
+                    </li>
+                    <li>
+                        <a href={getRelativeLocaleUrl(lang || 'en', 'contact')} class={currentUrl == '/contact' ? 'line-extended' : 'line-closed'}>Contact</a>
+                    </li>
+                </ul>
+            </nav>
+            <SwitchDayNight client:visible />
+            <LanguageSelector client:load languages={languages}, currentUrl={currentUrl}, initialLang={lang} />
+        </div>
+        <ButtonBurguer client:load /> 
     </div>
-</div>
+    
+</header>
 
 <style>
-    .header {
+    .header .contentBox {
         display: flex;
         justify-content: space-between;
         align-items: center;
         height: 150px;
         margin: 0px 50px 0px 50px;
     }
+    .logo {
+        display: flex;
+        flex-direction: column;
+        font-weight: bold;
+        font-size: 25px;
+    }
     .header .navbar {
         display: flex;
         gap: 20px;
     }
+
     .header .navbar nav ul {
         display: flex;
         list-style: none;
@@ -118,12 +145,55 @@ console.log("url: " + currentUrl);
     .line-closed:hover::after {
         width: 30px;
     }
-    .language-selector {
-        display: flex;
+
+    @media (max-width: 1160px) {
+        .header .navbar {
+            display: none;
+        }
+        .menu-burguer {
+            display: block;
+            background: none;
+            border: none;
+        }
+
+        /**menu open phone ------------- */
+        .menu-open {
+            height: 100vh;
+        }
+        .menu-open .contentBox {
+            height: 100vh;
+            padding-top: 65px;
+            flex-direction: column;
+            justify-content: start;
+            align-items: end;
+            flex-flow: column-reverse;
+        }
+        .menu-open .contentBox .navbar {
+            display: flex;
+            margin-top: 68px;
+            flex-direction: column;
+            align-self: center;
+            gap: 68px;
+        }
+        .menu-open .contentBox .navbar nav ul {
+            gap: 68px;
+            text-align: center;
+        }
+
+        .menu-open .contentBox .navbar nav ul li a{
+            font-size: 25px;
+        }
+        
+        .menu-open .logo{
+            display: none;
+        }
+        .menu-open .navbar {
+            display: block;
+        }
+        .menu-open .navbar nav ul{
+            flex-direction: column;
+        }
+        
     }
-    .language-selector svg {
-        width: 10px;
-        height: 10px;
-        fill: white;
-    }
+
 </style>

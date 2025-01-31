@@ -45,8 +45,8 @@ body.light-theme {
     background: var(--background-light);
     color: black;
 }
-body.light-theme .contactForm .name, 
-body.light-theme .contactForm .email, 
+body.light-theme .contactForm .name,
+body.light-theme .contactForm .email,
 body.light-theme .contactForm .message {
     border: 1px solid black;
 }
@@ -73,10 +73,7 @@ body.light-theme .languageSelectorBox .dropdown-options {
     font-size: 16px;
     color: #848484;
 }
-.toggle--checkbox {
-    display: none;
-    
-}
+
 /* Switch day/night ---------------------------------------------------- */
 .toggle--label {
     width: 45px;
@@ -98,6 +95,9 @@ body.light-theme .languageSelectorBox .dropdown-options {
     border-radius: 82px;
     background: #FFFFFF;
     transition: all 500ms;
+}
+.toggle--checkbox {
+    display: none;
 }
 .toggle--checkbox:checked + .toggle--label:before {
     content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath fill='%23FFDF5D' d='M283.2 512c79 0 151.1-35.9 198.9-94.8 7.1-8.7-.6-21.4-11.6-19.4-124.2 23.7-238.3-71.6-238.3-197 0-72.2 38.7-138.6 101.5-174.4 9.7-5.5 7.3-20.2-3.8-22.2A258.2 258.2 0 0 0 283.2 0c-141.3 0-256 114.5-256 256 0 141.3 114.5 256 256 256z'/%3E%3C/svg%3E");
@@ -122,7 +122,7 @@ body.light-theme .languageSelectorBox .dropdown-options {
 .contactForm .nameBox {
     width: 100%;
     position: relative;
-    
+
 }
 .contactForm .emailBox {
     width: 100%;
@@ -140,7 +140,7 @@ body.light-theme .languageSelectorBox .dropdown-options {
     padding: 0px 0px 0px 20px;
     box-sizing: border-box;
     outline: none;
-    
+
 }
 .contactForm .emailBox .email {
     width: 100%;
@@ -181,22 +181,22 @@ body.light-theme .languageSelectorBox .dropdown-options {
     justify-content: center;
     height: 100%;
 }
-.contactForm .messageBox .checkIcon, 
+.contactForm .messageBox .checkIcon,
 .contactForm .messageBox .errorIcon {
     top: 30px;
 }
-.contactForm .nameBox .checkIcon svg, 
+.contactForm .nameBox .checkIcon svg,
 .contactForm .nameBox .errorIcon svg,
 .contactForm .emailBox .checkIcon svg,
 .contactForm .emailBox .errorIcon svg,
 .contactForm .messageBox .checkIcon svg,
 .contactForm .messageBox .errorIcon svg
 {
-    width: 10px;
-    height: 10px;
+    width: 20px;
+    height: 20px;
     fill: white;
     border-radius: 10px;
-    padding: 5px;
+    padding: 2px;
 }
 .contactForm .checkIcon svg {
     background-color: rgb(127, 196, 25);
@@ -251,11 +251,11 @@ body.light-theme .languageSelectorBox .dropdown-options {
 }
 .container--toggle {
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 .languageSelectorBox {
     position: relative;
-    
 }
 .languageSelectorBox .selected {
     display: flex;
@@ -287,48 +287,12 @@ body.light-theme .languageSelectorBox .dropdown-options {
     background-color: var(--gray-color-1);
 }
 
-.language-selector {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'Raleway Variable';
-    font-size: 16px;
+.menu-burguer {
+    display: none;
     background: none;
     border: none;
-    color: white;
-    padding: 5px;
 }
 
-/* .languageSelectorDropdowm {
-    position: absolute;
-    background-color: #2F363D;
-    width: 100%;
-    margin-top: 10px;
-}
-.languageSelectorDropdownShow {
-    display: block;
-}
-.languageSelectorDropdownRemove {
-    display: none;
-}
-.languageSelectorDropdowm ul {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-.languageSelectorDropdowm ul li{
-    list-style: none;
-    padding-left: 30px;
-    padding: 5px 0px 5px 30px;
-}
-.languageSelectorDropdowm ul li:hover {
-    background-color: var(--gray-color-1);
-}
-.languageSelectorDropdowm ul li a {
-    color: white;
-    text-decoration: none;
-} */
 svg {
     fill: white;
     width: 20px;
@@ -373,5 +337,15 @@ svg {
     .contactForm {
         width: 100%;
     }
+    .menu-burguer {
+        display: block;
+    }
+}
+
+@media (max-width: 750px) {
     
+    
+    .educationCard {
+        width: 100%;
+    }
 }

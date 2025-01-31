@@ -30,9 +30,11 @@ training:
       - skill: "Vue"
       - skill: "Jest"
       - skill: "Astro"
+titleCertifications: "Certifications"
+descriptionCertifications: "Lesser training but no less relevant. From a bootcamp to courses on online platforms."
 certifications:
   - name: "Bootcamp DevOps"
-    taughtBy: "NTT Data"
+    taughtBy: "Taught by NTT Data"
   - name: "Master en CSS: Responsive, SASS, Flexbox, Grid y Bootstrap 4"
     taughtBy: "Taught by Victor Robles on Udemy"
   - name: "React: From Zero to Expert (Hooks  and MERN)"

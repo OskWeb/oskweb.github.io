@@ -1,6 +1,7 @@
 import { ErrorMessage, Field, Form, Formik, useField } from "formik"
 import * as Yup from 'yup';
 import emailjs from '@emailjs/browser';
+import DOMPurify from "dompurify";
 
 const TextArea = ({ ...props }) => {
 
@@ -27,18 +28,30 @@ const contactSchema = Yup.object().shape({
         .max(400, 'El mensaje debe de tener un máximo de 200 caracteres')
 });
 
-export const ContactForm = () => {
+interface ContactFormProps {
+    namePlaceholder: string;
+    emailPlaceholder: string;
+    messagePlaceholder: string;
+    alternalOption: string;
+    send: string;
+}
+
+export const ContactForm = ({ namePlaceholder, emailPlaceholder, messagePlaceholder, alternalOption, send }: ContactFormProps) => {
 
     const handleSubmit = async (values, { resetForm }) => {
+
+        const sanitizedName = DOMPurify.sanitize(values.user_name);
+        const sanitizedEmail = DOMPurify.sanitize(values.user_email);
+        const sanitizedMessage = DOMPurify.sanitize(values.message);
 
         console.log(values);
 
         const templateEmailjs = {
-            from_name: values.user_name,
-            from_email: values.user_email,
+            from_name: sanitizedName,
+            from_email: sanitizedEmail,
             to_name: 'Oscar',
             to_email: 'oscararnu18@gmail.com',
-            message: values.message
+            message: sanitizedMessage
         }
         emailjs
             .send('service_xivgkek', 'template_koexbjr', templateEmailjs, 'hij4213A93NpfZGlC')
@@ -75,7 +88,7 @@ export const ContactForm = () => {
                             <Field
                                 className="name"
                                 name="user_name"
-                                placeholder="Name"
+                                placeholder={namePlaceholder}
                                 type="text"
                             />
 
@@ -102,7 +115,7 @@ export const ContactForm = () => {
                             <Field
                                 className="email"
                                 name="user_email"
-                                placeholder="Email"
+                                placeholder={emailPlaceholder}
                                 type="email"
 
                             />
@@ -130,7 +143,7 @@ export const ContactForm = () => {
                             <TextArea
                                 className="message"
                                 name="message"
-                                placeholder="Message"
+                                placeholder={messagePlaceholder}
                             />
                             {!errors.message && touched.message && (
                                 <div className="checkIcon">
@@ -155,11 +168,11 @@ export const ContactForm = () => {
                                 className="sendForm"
                                 type="submit"
                             >
-                                Send
+                                {send}
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M498.1 5.6c10.1 7 15.4 19.1 13.5 31.2l-64 416c-1.5 9.7-7.4 18.2-16 23s-18.9 5.4-28 1.6L284 427.7l-68.5 74.1c-8.9 9.7-22.9 12.9-35.2 8.1S160 493.2 160 480l0-83.6c0-4 1.5-7.8 4.2-10.8L331.8 202.8c5.8-6.3 5.6-16-.4-22s-15.7-6.4-22-.7L106 360.8 17.7 316.6C7.1 311.3 .3 300.7 0 288.9s5.9-22.8 16.1-28.7l448-256c10.7-6.1 23.9-5.5 34 1.4z" /></svg>
                             </button>
                             <div className="alternalOption">
-                                <span>Or send me and email directly to</span>
+                                <span>{alternalOption}</span>
                                 <a href="mailto:oscararnu18@gmail.com">oscararnu18@gmail.com</a>
                             </div>
                         </div>
