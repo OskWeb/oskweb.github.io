@@ -25,5 +25,4 @@ projects:
     languages:
       - language: "TypeScript"
       - language: "CSS"
-      - language: "Other"
 ---

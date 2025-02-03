@@ -6,5 +6,6 @@ emailPlaceholder: "email"
 messagePlaceholder: "mensaje"
 alternalOption: "O envíame un correo electrónico directamente a"
 send: "enviar"
+sendMessage: "El email se ha enviado"
 lang: "es"
 ---

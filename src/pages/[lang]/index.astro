@@ -42,6 +42,7 @@ const { data } = currentPage;
 			</div>
 			<div class="boxImages">
 				<img src="/src/assets/photo_2025-01-31_20-06-15.jpg" alt=""/>
+				<div class="secondBox"></div>
 			</div>
 		</div>
 		<div class="experience">
@@ -60,7 +61,6 @@ const { data } = currentPage;
 				))}
 			</div>
 		</div>
-		
 	</div>
 </Layout>
 
@@ -68,6 +68,7 @@ const { data } = currentPage;
 	.aboutMe .profile{
 		display: flex;
 		gap: 80px;
+		width: 100%;
 	}
 	.aboutMe .profile .description {
 		display: flex;
@@ -78,21 +79,41 @@ const { data } = currentPage;
 		text-decoration: underline;
 		color: white;
 	}
-	img {
-		width: 400px;
-		height: 400px;
+	.aboutMe .profile .boxImages {
+		position: relative;
+		max-width: 400px;
+		aspect-ratio: 1 / 1;
+		margin-right: 100px;
+	}
+	.boxImages img {
+		
+		width: 100%;
+		height: 100%;
 		object-fit: cover;
 	}
+	.boxImages .secondBox {
+		position: absolute;
+		top: 25%;
+		left: 25%;
+		z-index: -1;
+		width: 100%;
+		height: 100%;
+		background-color: black;
+	}
 	.aboutMe .experience {
-		margin-top: 100px;
+		margin-top: 200px;
 	}
 	.aboutMe .experience .experience_wrap {
 		margin-top: 20px;
 	}
+	body.light-theme .boxImages .secondBox {
+		background-color: var(--toggle-label-background-light);
+	}
 
-	@media (max-width: 750px) {
+	@media (max-width: 850px) {
 		.aboutMe .profile {
 			flex-direction: column;
 		}
+		
 	}
 </style>

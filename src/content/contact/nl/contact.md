@@ -6,5 +6,6 @@ emailPlaceholder: "e-mailadres"
 messagePlaceholder: "bericht"
 alternalOption: "Of mail mij rechtstreeks op"
 send: "versturen"
+sendMessage: "E -mail is verzonden"
 lang: "nl"
 ---

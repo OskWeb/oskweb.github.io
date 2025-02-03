@@ -32,6 +32,7 @@ const contact = defineCollection({
     messagePlaceholder: z.string(),
     alternalOption: z.string(),
     send: z.string(),
+    sendMessage: z.string(),
     lang: z.enum(["en", "es", "fr", "de", "nl"]),
   }),
 });

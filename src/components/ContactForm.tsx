@@ -1,7 +1,10 @@
-import { ErrorMessage, Field, Form, Formik, useField } from "formik"
+import { Field, Form, Formik, useField } from "formik"
 import * as Yup from 'yup';
 import emailjs from '@emailjs/browser';
 import DOMPurify from "dompurify";
+import { TransitionsSnackbar, SlideTransition } from "./TransitionSnackbar";
+import { useState } from 'react';
+import { type TransitionProps } from "@mui/material/transitions";
 
 const TextArea = ({ ...props }) => {
 
@@ -34,9 +37,28 @@ interface ContactFormProps {
     messagePlaceholder: string;
     alternalOption: string;
     send: string;
+    sendMessage: string;
 }
 
-export const ContactForm = ({ namePlaceholder, emailPlaceholder, messagePlaceholder, alternalOption, send }: ContactFormProps) => {
+export const ContactForm = ({ namePlaceholder, emailPlaceholder, messagePlaceholder, alternalOption, send, sendMessage }: ContactFormProps) => {
+
+    const [snackbar, setSnackbar] = useState<snackbarType>({
+        open: false,
+
+    });
+
+    const handleStateChange = (
+        transition: React.ComponentType<
+            TransitionProps & {
+                children: React.ReactElement<any, any>;
+            }
+        >
+    ) => {
+        setSnackbar({
+            open: !snackbar.open,
+            transition,
+        });
+    }
 
     const handleSubmit = async (values, { resetForm }) => {
 
@@ -59,6 +81,7 @@ export const ContactForm = ({ namePlaceholder, emailPlaceholder, messagePlacehol
                 (result) => {
                     console.log('email send!', result.status, result.text);
                     resetForm();
+                    handleStateChange(SlideTransition);
                 },
                 (error) => {
                     console.error('email failed...', error);
@@ -176,6 +199,7 @@ export const ContactForm = ({ namePlaceholder, emailPlaceholder, messagePlacehol
                                 <a href="mailto:oscararnu18@gmail.com">oscararnu18@gmail.com</a>
                             </div>
                         </div>
+                        <TransitionsSnackbar snackbarState={snackbar} handleStateChange={handleStateChange} message={sendMessage} />
                     </Form>
                 )
             }}

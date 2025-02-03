@@ -6,5 +6,6 @@ emailPlaceholder: "email"
 messagePlaceholder: "message"
 alternalOption: "Ou envoyez-moi un e-mail directement à"
 send: "envoyer"
+sendMessage: "Email a été envoyé"
 lang: "fr"
 ---

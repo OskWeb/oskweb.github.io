@@ -6,7 +6,6 @@ import "@fontsource-variable/raleway";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { ButtonBurguer } from "./ButtonBurguer";
 
-
 const languages = {
   en: "English",
   es: "Spanish",
@@ -27,7 +26,6 @@ if(!currentUrl) {
 
 console.log("url: " + currentUrl);
 
-
 ---
 
 <script>
@@ -40,8 +38,6 @@ console.log("url: " + currentUrl);
                 header.classList.remove("menu-open");
             } else {
                 header.classList.add("menu-open");
-                
-               
             }
         }
         

@@ -22,7 +22,7 @@ const { name, school, from, to, description, skills } = Astro.props as Education
     <div class="topContent">
         <div class="educationTitle">
             <h1>{name}</h1>
-            <div class="titleLine"></div>
+            
         </div>
         <h2 class="SchoolName">{school}</h2>
         <div class="FromTo">
@@ -51,18 +51,27 @@ const { name, school, from, to, description, skills } = Astro.props as Education
             </div>
         </div>
         <div class="belowLine"></div>
+        <div class="titleLine"></div>
     </div>
+    
 </div>
 
 <style>
+
+    body.light-theme .belowLine {
+        background-color: black;
+    }
+
     .educationCard {
         width: 100%;
         height: 250px;
-        
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
     .educationCard:hover .titleLine {
         transition: all 300ms ease;
-        width: 100px;
+        width: 300px;
     }
     .educationCard .topContent {
         display: flex;
@@ -75,7 +84,7 @@ const { name, school, from, to, description, skills } = Astro.props as Education
         gap: 50px;
     }
     .titleLine {
-        width: 350px;
+        width: 100%;
         height: 2px;
         background-color: white;
     }
@@ -96,13 +105,14 @@ const { name, school, from, to, description, skills } = Astro.props as Education
     }
     .educationCard .belowContent {
         display: flex;
-        gap: 10px;
+        flex-direction: column;
+        gap: 20px;
     } 
     .educationCard .belowContent .description {
         color: var(--gray-color-1);
     }
     .educationCard .belowContent .skills {
-        width: 300px;
+        width: 100%;
     }
     .educationCard .belowContent .skills .toolsTitle {
         display: flex;

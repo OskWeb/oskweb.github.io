@@ -50,7 +50,6 @@ body.light-theme .contactForm .email,
 body.light-theme .contactForm .message {
     border: 1px solid black;
 }
-
 body.light-theme .alternalOption span {
     color: var(--gray-color-1);
 }
@@ -60,9 +59,14 @@ body.light-theme .alternalOption a {
 body.light-theme svg {
     fill: black;
 }
+body.light-theme .socialMedia svg {
+    fill: white;
+}
+
 body.light-theme .languageSelectorBox .dropdown-options {
     color: white;
 }
+
 
 /*-----------------------------------------------------*/
 .section-title {
