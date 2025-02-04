@@ -5,6 +5,7 @@ import '../styles/global.css';
 import "@fontsource-variable/raleway";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { ButtonBurguer } from "./ButtonBurguer";
+import { Logo } from "./Logo";
 
 const languages = {
   en: "English",
@@ -21,14 +22,25 @@ let currentUrl = Astro.url.pathname.replace(/https?:\/\/[^/]+/, "")  // Elimina 
                       .replace(/\/$/, "") || "/";  // Elimina barra final si existe
 
 if(!currentUrl) {
-    currentUrl = "/";
+    currentUrl = "/about";
 }
 
 console.log("url: " + currentUrl);
 
+const url = getRelativeLocaleUrl(lang || 'en', 'about');
+
 ---
 
 <script>
+
+    const switchState = JSON.parse(localStorage.getItem("theme") || "false");
+
+    if(switchState) {
+        document.body.classList.add('light-theme');
+    } else {
+        document.body.classList.remove('light-theme');
+    }
+
     window.addEventListener("toggle-menu", (event) => {
         const customEvent = event as CustomEvent<boolean>;
         const header = document.querySelector("header");
@@ -45,17 +57,19 @@ console.log("url: " + currentUrl);
 </script>
 
 <header class="header">
+    
     <div class="contentBox">
-        <div class="logo">
+        <!-- <div class="logo">
             <span>Oscar</span>
             <span>Aranda</span>
-        </div>
-        
+            
+        </div> -->
+        <Logo client:load url={url}/>
         <div class="navbar">
             <nav>
                 <ul>
                     <li>
-                        <a href={getRelativeLocaleUrl(lang || 'en', '')} class={currentUrl == '/' ? 'line-extended' : 'line-closed'}>About me</a>
+                        <a href={getRelativeLocaleUrl(lang || 'en', 'about')} class={currentUrl == '/about' ? 'line-extended' : 'line-closed'}>About me</a>
                     </li>
                     <li>
                         <a href={getRelativeLocaleUrl(lang || 'en', 'projects')} class={currentUrl == '/projects' ? 'line-extended' : 'line-closed'}>Projects</a>
@@ -77,6 +91,9 @@ console.log("url: " + currentUrl);
 </header>
 
 <style>
+    .header {
+        position: relative;
+    }
     .header .contentBox {
         display: flex;
         justify-content: space-between;
@@ -84,17 +101,11 @@ console.log("url: " + currentUrl);
         height: 150px;
         margin: 0px 50px 0px 50px;
     }
-    .logo {
-        display: flex;
-        flex-direction: column;
-        font-weight: bold;
-        font-size: 25px;
-    }
+    
     .header .navbar {
         display: flex;
         gap: 20px;
     }
-
     .header .navbar nav ul {
         display: flex;
         list-style: none;
@@ -180,9 +191,7 @@ console.log("url: " + currentUrl);
             font-size: 25px;
         }
         
-        .menu-open .logo{
-            display: none;
-        }
+        
         .menu-open .navbar {
             display: block;
         }

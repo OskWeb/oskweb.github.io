@@ -66,6 +66,9 @@ body.light-theme .socialMedia svg {
 body.light-theme .languageSelectorBox .dropdown-options {
     color: white;
 }
+body.light-theme .logo {
+    color: black;
+}
 
 
 /*-----------------------------------------------------*/
@@ -334,6 +337,30 @@ svg {
     background-color: var(--astro-skill-color);
 }
 
+.header .divAnimated {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90px;
+    height: 90px;
+    background: linear-gradient(to bottom right, var(--navbar-hover-color) 50%, transparent 50%);
+    z-index: -1;
+    transition: all 0.3s ease-in;
+}
+.header .logo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
+    font-size: 25px;
+    color: white;
+    text-decoration: none;
+}
+.header .logo:hover ~ .divAnimated {
+    width: 260px;
+    height: 260px;
+}
+
 @media (max-width: 1160px) {
     .socialMediaBox {
         display: none;
@@ -343,6 +370,10 @@ svg {
     }
     .menu-burguer {
         display: block;
+    }
+
+    .menu-open .logoBox{
+        display: none;
     }
 }
 

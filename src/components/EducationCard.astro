@@ -57,11 +57,13 @@ const { name, school, from, to, description, skills } = Astro.props as Education
 </div>
 
 <style>
-
-    body.light-theme .belowLine {
+    body.light-theme .educationCard .belowContent .skills .toolsTitle svg path {
+        fill: black;
+    }
+    body.light-theme .titleLine {
         background-color: black;
     }
-
+        
     .educationCard {
         width: 100%;
         height: 250px;
@@ -152,6 +154,7 @@ const { name, school, from, to, description, skills } = Astro.props as Education
     }
 
     @media (max-width: 1160px) {
+        
         .educationCard {
             display: flex;
             flex-direction: column;
@@ -185,6 +188,8 @@ const { name, school, from, to, description, skills } = Astro.props as Education
         .educationCard:hover .belowLine {
             width: 25%;
         }
+
+        
     }
 
     @media (max-width: 750px) {

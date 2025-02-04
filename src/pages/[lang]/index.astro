@@ -1,119 +1,14 @@
 ---
-import ExperienceCompanyCard from '../../components/ExperienceCompanyCard.astro';
-import Layout from '../../layouts/Layout.astro';
-import '../../styles/global.css';
-import "@fontsource-variable/raleway";
-import { getCollection } from "astro:content";
-
-const { lang } = Astro.params;
-
 export const getStaticPaths = async () => {
-  const pages = await getCollection("about");
 
-  return pages.map((page) => ({
-    params: {
-      lang: page.data.lang,
-    },
-  }));
+    return [{
+        params: {
+            lang: "en"
+        }
+    }]
 };
-
-const about = await getCollection("about");
-
-const currentPage = about.find((p) => p.data.lang === lang);
-
-if(!currentPage) {
-	throw new Error(`Page not found for ${lang}/about`)
-}
-
-const { data } = currentPage;
 ---
 
-<Layout>
-	<div class="aboutMe">
-		<div class="profile">
-			<div class="description">
-				<h2 class="section-title">
-					{data.title}
-				</h2>
-				<div class="text-description">
-					{data.description}
-				</div>
-				<a class="resume" aria-label="Download my resume" href="/src/resume/CV_Oscar_Aranda_2024_EN.pdf" target="_blank" download>{data.resume}</a>
-			</div>
-			<div class="boxImages">
-				<img src="/src/assets/photo_2025-01-31_20-06-15.jpg" alt=""/>
-				<div class="secondBox"></div>
-			</div>
-		</div>
-		<div class="experience">
-			<h2 class="section-title">
-				{data.experience}
-			</h2>
-			<div class="experience_wrap">
-				{data.companies.map((company) => (
-					<ExperienceCompanyCard 
-						company={company.company}
-						position={company.position}
-						jobDescriptions={company.jobDescriptions}
-						fromTo={company.fromTo}
-						location={company.location}
-					/>
-				))}
-			</div>
-		</div>
-	</div>
-</Layout>
-
-<style>
-	.aboutMe .profile{
-		display: flex;
-		gap: 80px;
-		width: 100%;
-	}
-	.aboutMe .profile .description {
-		display: flex;
-		flex-direction: column;
-		gap: 15px;
-	}
-	.resume {
-		text-decoration: underline;
-		color: white;
-	}
-	.aboutMe .profile .boxImages {
-		position: relative;
-		max-width: 400px;
-		aspect-ratio: 1 / 1;
-		margin-right: 100px;
-	}
-	.boxImages img {
-		
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
-	}
-	.boxImages .secondBox {
-		position: absolute;
-		top: 25%;
-		left: 25%;
-		z-index: -1;
-		width: 100%;
-		height: 100%;
-		background-color: black;
-	}
-	.aboutMe .experience {
-		margin-top: 200px;
-	}
-	.aboutMe .experience .experience_wrap {
-		margin-top: 20px;
-	}
-	body.light-theme .boxImages .secondBox {
-		background-color: var(--toggle-label-background-light);
-	}
-
-	@media (max-width: 850px) {
-		.aboutMe .profile {
-			flex-direction: column;
-		}
-		
-	}
-</style>
+<script>
+    window.location.href = "/en/about"
+</script>

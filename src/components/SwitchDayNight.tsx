@@ -3,8 +3,6 @@ import { useEffect, useState } from 'react';
 export const SwitchDayNight = () => {
     const [isChecked, setIsChecked] = useState<boolean>(false);
 
-
-
     useEffect(() => {
 
         const switchState = JSON.parse(localStorage.getItem("theme") || "false");
