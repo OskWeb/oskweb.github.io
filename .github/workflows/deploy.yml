@@ -45,10 +45,10 @@ jobs:
       - name: Checkout the repository
         uses: actions/checkout@v4
       
-      - name: Download build artifacts
-        uses: actions/download-artifact@v3
-        with:
-          name: github-pages
+      #- name: Download build artifacts
+      #  uses: actions/download-artifact@v3
+      #  with:
+      #    name: github-pages
 
       - name: Deploy to GitHub Pages
         # id: deployment
