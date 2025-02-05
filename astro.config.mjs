@@ -4,6 +4,7 @@ import react from "@astrojs/react";
 
 // https://astro.build/config
 export default defineConfig({
+  site: "https://oskweb.github.io",
   base: "oskweb.github.io",
   integrations: [react()],
   i18n: {
