@@ -12,7 +12,8 @@ projects:
       - language: "JavaScript"
       - language: "HTML"
   - title: "Image bank"
-    description: "Real-time file sharing system. Uses NodeJS, ReactJS, SocketIO, MongoDB, Chai and WebdriverIO for testing."
+    description: "Creation of an image bank thanks to the use of different APIs.
+    You can select several of them and download them following a simple purchase process."
     link: "https://github.com/OskWeb/modulo4.1_react_avanzado_listado_imagenes"
     languages:
       - language: "TypeScript"
