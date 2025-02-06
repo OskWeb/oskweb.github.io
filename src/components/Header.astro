@@ -25,6 +25,8 @@ if(!currentUrl) {
 
 console.log("url: " + currentUrl);
 
+const about = getRelativeLocaleUrl(lang || 'en', 'about');
+
 ---
 
 <script>
@@ -60,16 +62,16 @@ console.log("url: " + currentUrl);
             <nav>
                 <ul>
                     <li>
-                        <a href={getRelativeLocaleUrls(lang || 'en', 'about')} class={currentUrl == '/about' ? 'line-extended' : 'line-closed'}>About me</a>
+                        <a href={getRelativeLocaleUrl(lang || 'en', 'about')} class={currentUrl == '/about' ? 'line-extended' : 'line-closed'}>About me</a>
                     </li>
                     <li>
-                        <a href={getRelativeLocaleUrls(lang || 'en', 'projects')} class={currentUrl == '/projects' ? 'line-extended' : 'line-closed'}>Projects</a>
+                        <a href={getRelativeLocaleUrl(lang || 'en', 'projects')} class={currentUrl == '/projects' ? 'line-extended' : 'line-closed'}>Projects</a>
                     </li>
                     <li>
-                        <a href={getRelativeLocaleUrls(lang || 'en', 'education')} class={currentUrl == '/education' ? 'line-extended' : 'line-closed'}>Education</a>
+                        <a href={getRelativeLocaleUrl(lang || 'en', 'education')} class={currentUrl == '/education' ? 'line-extended' : 'line-closed'}>Education</a>
                     </li>
                     <li>
-                        <a href={getRelativeLocaleUrls(lang || 'en', 'contact')} class={currentUrl == '/contact' ? 'line-extended' : 'line-closed'}>Contact</a>
+                        <a href={getRelativeLocaleUrl(lang || 'en', 'contact')} class={currentUrl == '/contact' ? 'line-extended' : 'line-closed'}>Contact</a>
                     </li>
                 </ul>
             </nav>
