@@ -1,6 +1,9 @@
 ---
 title: "Hola, Mi nombre es Oscar"
-description: "Apasionado por el mundo digital. Soy una persona resolutiva y curiosa con ganas de aprender nuevas tecnologías y seguir adentrándome en el sector. En búsqueda de nuevas oportunidades para seguir creciendo como persona."
+description_1: "Soy un desarrollador de software junior de España."
+description_2: "Mis áreas de interés incluyen el desarrollo frontend y soluciones JAVA para diferentes objetivos."
+description_3: "Apasionado por el mundo digital. Soy una persona resolutiva y curiosa con ganas de aprender nuevas tecnologías y seguir adentrándome en el sector."
+description_4: "En búsqueda de nuevas oportunidades impulsadas por un propósito."
 resume: "Consigue mi CV"
 experience: "Experiencia"
 companies:

@@ -1,6 +1,9 @@
 ---
 title: "Hallo, mijn naam is Oscar"
-description: "Gepassioneerd door de digitale wereld. Ik ben een vindingrijk en nieuwsgierig persoon die graag nieuwe technologieën leert kennen en zich verder wil verdiepen in de sector. Op zoek naar nieuwe mogelijkheden om als persoon te blijven groeien."
+description_1: "Ik ben een junior softwareontwikkelaar uit Spanje."
+description_2: "Mijn interessegebieden zijn frontend-ontwikkeling en JAVA-oplossingen voor verschillende doeleinden."
+description_3: "Gepassioneerd door de digitale wereld. Ik ben een vindingrijk en nieuwsgierig persoon die graag nieuwe technologieën leert en zich blijft verdiepen in de sector."
+description_4: "Op zoek naar nieuwe kansen, gedreven door een doel."
 resume: "Ontvang mijn CV"
 experience: "Ervaring"
 companies:

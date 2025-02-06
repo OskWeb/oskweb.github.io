@@ -1,6 +1,9 @@
 ---
 title: "Bonjour, je m'appelle Oscar"
-description: "Passionné par le monde numérique. Je suis une personne débrouillarde et curieuse qui désire apprendre de nouvelles technologies et continuer à approfondir le secteur. À la recherche de nouvelles opportunités pour continuer à grandir en tant que personne."
+description_1: "Je suis un développeur de logiciels junior originaire d'Espagne."
+description_2: "Mes domaines d'intérêt incluent le développement frontend et les solutions JAVA à des fins différentes."
+description_3: "Passionnée par le monde numérique, je suis une personne débrouillarde et curieuse désireuse d'apprendre de nouvelles technologies et de continuer à approfondir le secteur."
+description_4: "À la recherche de nouvelles opportunités motivées par un objectif."
 resume: "Obtenir mon CV"
 experience: "Expérience"
 companies:

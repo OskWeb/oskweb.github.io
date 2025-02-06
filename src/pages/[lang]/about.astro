@@ -36,7 +36,10 @@ const { data } = currentPage;
 					{data.title}
 				</h2>
 				<div class="text-description">
-					{data.description}
+					<p>{data.description_1}</p>
+					<p>{data.description_2}</p>
+					<p>{data.description_3}</p>
+					<p>{data.description_4}</p>
 				</div>
 				<a class="resume" aria-label="Download my resume" href="/CV_Oscar_Aranda_2024_EN.pdf" target="_blank" download>{data.resume}</a>
 			</div>
@@ -79,6 +82,11 @@ const { data } = currentPage;
 		display: flex;
 		flex-direction: column;
 		gap: 15px;
+	}
+	.aboutMe .profile .description .text-description {
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
 	}
 	.resume {
 		text-decoration: underline;

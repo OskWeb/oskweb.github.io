@@ -1,6 +1,9 @@
 ---
 title: "Hallo, mein Name ist Oscar"
-description: "Leidenschaft für die digitale Welt. Ich bin ein einfallsreicher und neugieriger Mensch, der gerne neue Technologien lernt und sich immer weiter in den Sektor vertieft. Auf der Suche nach neuen Möglichkeiten, mich persönlich weiterzuentwickeln."
+description_1: "Ich bin ein Junior-Softwareentwickler aus Spanien."
+description_2: "Zu meinen Interessensgebieten gehören Frontend-Entwicklung und JAVA-Lösungen für unterschiedliche Zielsetzungen."
+description_3: "Ich interessiere mich leidenschaftlich für die digitale Welt. Ich bin ein einfallsreicher und neugieriger Mensch, der gerne neue Technologien lernt und sich immer weiter in den Sektor vertieft."
+description_4: "Auf der Suche nach neuen Möglichkeiten und einem Ziel."
 resume: "Meinen Lebenslauf abrufen"
 experience: "Erfahrung"
 companies:

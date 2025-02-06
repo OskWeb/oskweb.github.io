@@ -1,6 +1,9 @@
 ---
 title: "Hello, my name is Oscar"
-description: "Passionate about the digital world. I am a resourceful and curious person eager to learn new technologies and continue to delve into the sector. In search of new opportunities to continue growing as a person."
+description_1: "I´m a junior software developer from Spain."
+description_2: "My areas of interest include frontend development and JAVA solutions for different objetives."
+description_3: "Passionate about the digital world. I am a resourceful and curious person eager to learn new technologies and continue to delve into the sector."
+description_4: "In search of new opportunities driven by a purpose."
 resume: "Get My Resume"
 experience: "Experience"
 companies:

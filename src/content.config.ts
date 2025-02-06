@@ -3,7 +3,10 @@ import { defineCollection, z } from "astro:content";
 const about = defineCollection({
   schema: z.object({
     title: z.string(),
-    description: z.string(),
+    description_1: z.string(),
+    description_2: z.string(),
+    description_3: z.string(),
+    description_4: z.string(),
     resume: z.string(),
     experience: z.string(),
     companies: z.array(
