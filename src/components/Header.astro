@@ -1,8 +1,6 @@
 ---
 import  { LanguageSelector }  from "./LanguageSelector";
 import { SwitchDayNight } from "./SwitchDayNight";
-import '../styles/global.css';
-import "@fontsource-variable/raleway";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { ButtonBurguer } from "./ButtonBurguer";
 import { Logo } from "./Logo";
@@ -27,10 +25,13 @@ if(!currentUrl) {
 
 console.log("url: " + currentUrl);
 
-const about = getRelativeLocaleUrl(lang || 'en', 'about');
-const projects = getRelativeLocaleUrl(lang || 'en', 'projects');
-const education = getRelativeLocaleUrl(lang || 'en', 'education');
-const contact = getRelativeLocaleUrl(lang || 'en', 'contact');
+const base = import.meta.env.BASE_URL || '/';
+const getRelativeLocaleUrls = (lang = 'en', page) => `${base}${lang}/${page}`;
+
+const about = getRelativeLocaleUrls(lang || 'en', 'about');
+const projects = getRelativeLocaleUrls(lang || 'en', 'projects');
+const education = getRelativeLocaleUrls(lang || 'en', 'education');
+const contact = getRelativeLocaleUrls(lang || 'en', 'contact');
 
 ---
 
@@ -67,16 +68,16 @@ const contact = getRelativeLocaleUrl(lang || 'en', 'contact');
             <nav>
                 <ul>
                     <li>
-                        <a href={`/oskweb.github.io/${about}`} class={currentUrl == '/about' ? 'line-extended' : 'line-closed'}>About me</a>
+                        <a href={`${about}`} class={currentUrl == '/about' ? 'line-extended' : 'line-closed'}>About me</a>
                     </li>
                     <li>
-                        <a href={`/oskweb.github.io/${projects}`} class={currentUrl == '/projects' ? 'line-extended' : 'line-closed'}>Projects</a>
+                        <a href={`${projects}`} class={currentUrl == '/projects' ? 'line-extended' : 'line-closed'}>Projects</a>
                     </li>
                     <li>
-                        <a href={`/oskweb.github.io/${education}`} class={currentUrl == '/education' ? 'line-extended' : 'line-closed'}>Education</a>
+                        <a href={`${education}`} class={currentUrl == '/education' ? 'line-extended' : 'line-closed'}>Education</a>
                     </li>
                     <li>
-                        <a href={`/oskweb.github.io/${contact}`} class={currentUrl == '/contact' ? 'line-extended' : 'line-closed'}>Contact</a>
+                        <a href={`${contact}`} class={currentUrl == '/contact' ? 'line-extended' : 'line-closed'}>Contact</a>
                     </li>
                 </ul>
             </nav>

@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 export const ButtonBurguer = () => {
 
     const [isButtonActive, setIsButtonActive] = useState(false);
