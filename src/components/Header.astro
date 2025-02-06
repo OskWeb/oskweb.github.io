@@ -25,14 +25,6 @@ if(!currentUrl) {
 
 console.log("url: " + currentUrl);
 
-const base = import.meta.env.BASE_URL || '/';
-const getRelativeLocaleUrls = (lang = 'en', page) => `${base}${lang}/${page}`;
-
-const about = getRelativeLocaleUrls(lang || 'en', 'about');
-const projects = getRelativeLocaleUrls(lang || 'en', 'projects');
-const education = getRelativeLocaleUrls(lang || 'en', 'education');
-const contact = getRelativeLocaleUrls(lang || 'en', 'contact');
-
 ---
 
 <script>
@@ -68,16 +60,16 @@ const contact = getRelativeLocaleUrls(lang || 'en', 'contact');
             <nav>
                 <ul>
                     <li>
-                        <a href={`${about}`} class={currentUrl == '/about' ? 'line-extended' : 'line-closed'}>About me</a>
+                        <a href={getRelativeLocaleUrls(lang || 'en', 'about')} class={currentUrl == '/about' ? 'line-extended' : 'line-closed'}>About me</a>
                     </li>
                     <li>
-                        <a href={`${projects}`} class={currentUrl == '/projects' ? 'line-extended' : 'line-closed'}>Projects</a>
+                        <a href={getRelativeLocaleUrls(lang || 'en', 'projects')} class={currentUrl == '/projects' ? 'line-extended' : 'line-closed'}>Projects</a>
                     </li>
                     <li>
-                        <a href={`${education}`} class={currentUrl == '/education' ? 'line-extended' : 'line-closed'}>Education</a>
+                        <a href={getRelativeLocaleUrls(lang || 'en', 'education')} class={currentUrl == '/education' ? 'line-extended' : 'line-closed'}>Education</a>
                     </li>
                     <li>
-                        <a href={`${contact}`} class={currentUrl == '/contact' ? 'line-extended' : 'line-closed'}>Contact</a>
+                        <a href={getRelativeLocaleUrls(lang || 'en', 'contact')} class={currentUrl == '/contact' ? 'line-extended' : 'line-closed'}>Contact</a>
                     </li>
                 </ul>
             </nav>
