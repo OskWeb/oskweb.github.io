@@ -382,3 +382,20 @@ svg {
         width: 100%;
     }
 }
+@media (max-width: 500px) {
+    .button-group {
+        flex-direction: column;
+        gap: 20px;
+    }
+    .button-group .sendForm {
+        width: 100%;
+        justify-content: center;
+        gap: 10px;
+    }
+    .button-group .alternalOption span , 
+    .button-group .alternalOption a 
+    {
+        width: 100%;
+        text-align: center;
+    }
+}

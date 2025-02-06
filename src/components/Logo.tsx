@@ -8,7 +8,7 @@ export const Logo = ({ url }) => {
 
             <a
                 className="logo"
-                href={`/oskweb.github.io/${url}`}
+                href={url}
             >
                 <span>Oscar</span>
                 <span>Aranda</span>
