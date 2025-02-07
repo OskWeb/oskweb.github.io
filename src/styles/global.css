@@ -356,9 +356,12 @@ svg {
     color: white;
     text-decoration: none;
 }
-.header .logo:hover ~ .divAnimated {
-    width: 260px;
-    height: 260px;
+
+@media (hover: hover) {
+    .header .logo:hover ~ .divAnimated {
+        width: 260px;
+        height: 260px;
+    }
 }
 
 @media (max-width: 1160px) {

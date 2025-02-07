@@ -4,6 +4,7 @@ import { SwitchDayNight } from "./SwitchDayNight";
 import { getRelativeLocaleUrl } from "astro:i18n";
 import { ButtonBurguer } from "./ButtonBurguer";
 import { Logo } from "./Logo";
+import { getCollection } from "astro:content";
 
 const languages = {
   en: "English",
@@ -26,6 +27,16 @@ if(!currentUrl) {
 console.log("url: " + currentUrl);
 
 const about = getRelativeLocaleUrl(lang || 'en', 'about');
+
+const header = await getCollection("header");
+
+const currentPage = header.find((p) => p.data.lang === lang);
+
+if(!currentPage) {
+	throw new Error(`Page not found for ${lang}/about`)
+}
+
+const { data } = currentPage;
 
 ---
 
@@ -62,16 +73,16 @@ const about = getRelativeLocaleUrl(lang || 'en', 'about');
             <nav>
                 <ul>
                     <li>
-                        <a href={getRelativeLocaleUrl(lang || 'en', 'about')} class={currentUrl == '/about' ? 'line-extended' : 'line-closed'}>About me</a>
+                        <a href={getRelativeLocaleUrl(lang || 'en', 'about')} class={currentUrl == '/about' ? 'line-extended' : 'line-closed'}>{data.nav_link_1}</a>
                     </li>
                     <li>
-                        <a href={getRelativeLocaleUrl(lang || 'en', 'projects')} class={currentUrl == '/projects' ? 'line-extended' : 'line-closed'}>Projects</a>
+                        <a href={getRelativeLocaleUrl(lang || 'en', 'projects')} class={currentUrl == '/projects' ? 'line-extended' : 'line-closed'}>{data.nav_link_2}</a>
                     </li>
                     <li>
-                        <a href={getRelativeLocaleUrl(lang || 'en', 'education')} class={currentUrl == '/education' ? 'line-extended' : 'line-closed'}>Education</a>
+                        <a href={getRelativeLocaleUrl(lang || 'en', 'education')} class={currentUrl == '/education' ? 'line-extended' : 'line-closed'}>{data.nav_link_3}</a>
                     </li>
                     <li>
-                        <a href={getRelativeLocaleUrl(lang || 'en', 'contact')} class={currentUrl == '/contact' ? 'line-extended' : 'line-closed'}>Contact</a>
+                        <a href={getRelativeLocaleUrl(lang || 'en', 'contact')} class={currentUrl == '/contact' ? 'line-extended' : 'line-closed'}>{data.nav_link_4}</a>
                     </li>
                 </ul>
             </nav>
@@ -97,12 +108,12 @@ const about = getRelativeLocaleUrl(lang || 'en', 'about');
     
     .header .navbar {
         display: flex;
-        gap: 20px;
+        gap: 35px;
     }
     .header .navbar nav ul {
         display: flex;
         list-style: none;
-        gap: 20px;
+        gap: 35px;
     }
     .header .navbar nav ul li a {
         color: #848484;

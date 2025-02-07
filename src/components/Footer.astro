@@ -3,19 +3,30 @@ import { getRelativeLocaleUrl } from "astro:i18n";
 
 const { lang } = Astro.params;
 
+import { getCollection } from "astro:content";
+
+const footer = await getCollection("footer");
+
+const currentPage = footer.find((p) => p.data.lang === lang);
+
+if(!currentPage) {
+	throw new Error(`Page not found for ${lang}/about`)
+}
+
+const { data } = currentPage;
+
 ---
 
 <footer>
-    
         <div class="aboutMeFooter">
             <div class="profile">
                 <img class="profile-photo" src="/photo_2025-01-31_20-06-15.jpg" alt="profile">
                 <p class="description">
-                    Hi, I´m
+                    {data.about_me_1}
                     <span class="name">
-                    Oscar Aranda
+                    {data.about_me_2}
                     </span>
-                    , a junior software developer from Spain. Thanks for checking out my site!
+                    {data.about_me_3}
                 </p>
             </div>
             
@@ -31,35 +42,35 @@ const { lang } = Astro.params;
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112c0 15.1 7.1 29.3 19.2 38.4L236.8 313.6c11.4 8.5 27 8.5 38.4 0L492.8 150.4c12.1-9.1 19.2-23.3 19.2-38.4c0-26.5-21.5-48-48-48L48 64zM0 176L0 384c0 35.3 28.7 64 64 64l384 0c35.3 0 64-28.7 64-64l0-208L294.4 339.2c-22.8 17.1-54 17.1-76.8 0L0 176z"/></svg>
                     </a>
                 </div>
-                <span class="copyright">Handcrafted by me © 2025</span>
+                <span class="copyright">{data.copyright}</span>
             </div>  
         </div>
         <div class="nav-box">
             <nav>
-                <span>Links</span>
+                <span>{data.nav_links_title}</span>
                 <ul>
                     <li>
-                        <a href={getRelativeLocaleUrl(lang || 'en', '')}>About me</a>
+                        <a href={getRelativeLocaleUrl(lang || 'en', '')}>{data.nav_link_1}</a>
                     </li>
                     <li>
-                        <a href={getRelativeLocaleUrl(lang || 'en', 'projects')}>Projects</a>
+                        <a href={getRelativeLocaleUrl(lang || 'en', 'projects')}>{data.nav_link_2}</a>
                     </li>
                     <li>
-                        <a href={getRelativeLocaleUrl(lang || 'en', 'education')}>Education</a>
+                        <a href={getRelativeLocaleUrl(lang || 'en', 'education')}>{data.nav_link_3}</a>
                     </li>
                     <li>
-                        <a href={getRelativeLocaleUrl(lang || 'en', 'contact')}>Contact</a>
+                        <a href={getRelativeLocaleUrl(lang || 'en', 'contact')}>{data.nav_link_4}</a>
                     </li>
                 </ul>
             </nav>
         </div>
         <div class="spotify-resume-box">
             <div class="spotifyEmbed">
-                <span>What I´m listening to</span>
+                <span>{data.spotify}</span>
                 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1ShyiEm2kD0XMA7fNhMIVk?utm_source=generator&theme=0" width="100%" height="100" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
             <div class="resume">
-                <a aria-label="Download my resume" href="/CV_Oscar_Aranda_2024_EN.pdf" target="_blank" download>Get my resume</a>
+                <a aria-label="Download my resume" href="/CV_Oscar_Aranda_2024_EN.pdf" target="_blank" download>{data.resume}</a>
             </div>
         </div>
         

@@ -82,9 +82,38 @@ const education = defineCollection({
   }),
 });
 
+const footer = defineCollection({
+  schema: z.object({
+    about_me_1: z.string(),
+    about_me_2: z.string(),
+    about_me_3: z.string(),
+    nav_links_title: z.string(),
+    nav_link_1: z.string(),
+    nav_link_2: z.string(),
+    nav_link_3: z.string(),
+    nav_link_4: z.string(),
+    spotify: z.string(),
+    resume: z.string(),
+    copyright: z.string(),
+    lang: z.string(),
+  }),
+});
+
+const header = defineCollection({
+  schema: z.object({
+    nav_link_1: z.string(),
+    nav_link_2: z.string(),
+    nav_link_3: z.string(),
+    nav_link_4: z.string(),
+    lang: z.string(),
+  }),
+});
+
 export const collections = {
   about,
   contact,
   projects,
   education,
+  footer,
+  header,
 };
