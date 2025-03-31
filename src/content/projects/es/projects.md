@@ -11,6 +11,7 @@ projects:
       - language: "CSS"
       - language: "JavaScript"
       - language: "HTML"
+      - language: "React"
   - title: "Banco de imágenes"
     description: "Creación de un banco de imágenes gracias al uso de diferentes APIs. 
     Podrás seleccionar varias de ellas y descargarlas siguiendo un simple proceso de compra."
@@ -20,10 +21,20 @@ projects:
       - language: "CSS"
       - language: "JavaScript"
       - language: "HTML"
+      - language: "React"
   - title: "Gestión de pedidos"
     description: "Proyecto con el cual podemos simular la gestión de pedidos para un proveedor. Desde la creación, listado, envio etc."
     link: "https://github.com/OskWeb/modulo4.1_react_avanzado_desafio_pedidos"
     languages:
       - language: "TypeScript"
       - language: "CSS"
+      - language: "React"
+  - title: "Gestor de tareas"
+    description: "Aplicación que permite a los usuarios gestionar una lista de tareas pendientes."
+    link: "https://github.com/OskWeb/modulo4.3_vue_laboratorio"
+    languages:
+      - language: "Typescript"
+      - language: "CSS"
+      - language: "Vue"
+      - language: "Nuxt"
 ---

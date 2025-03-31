@@ -26,4 +26,12 @@ projects:
     languages:
       - language: "TypeScript"
       - language: "CSS"
+  - title: "Taakbeheer"
+    description: "Applicatie waarmee gebruikers een takenlijst kunnen beheren."
+    link: "https://github.com/OskWeb/modulo4.3_vue_laboratorio"
+    languages:
+      - language: "Typescript"
+      - language: "CSS"
+      - language: "Vue"
+      - language: "Nuxt"
 ---

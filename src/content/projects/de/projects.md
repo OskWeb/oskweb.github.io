@@ -26,4 +26,12 @@ projects:
     languages:
       - language: "TypeScript"
       - language: "CSS"
+   - title: "ToDo-Aufgabenliste"
+    description: "Anwendung, mit der Benutzer eine Aufgabenliste verwalten können"
+    link: "https://github.com/OskWeb/modulo4.3_vue_laboratorio"
+    languages:
+      - language: "Typescript"
+      - language: "CSS"
+      - language: "Vue"
+      - language: "Nuxt"
 ---

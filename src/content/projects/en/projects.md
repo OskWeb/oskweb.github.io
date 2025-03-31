@@ -11,6 +11,7 @@ projects:
       - language: "CSS"
       - language: "JavaScript"
       - language: "HTML"
+      - language: "React"
   - title: "Image bank"
     description: "Creation of an image bank thanks to the use of different APIs.
     You can select several of them and download them following a simple purchase process."
@@ -20,10 +21,20 @@ projects:
       - language: "CSS"
       - language: "JavaScript"
       - language: "HTML"
+      - language: "React"
   - title: "Order management"
     description: "Project with which we can simulate the management of orders for a supplier. From creation, listing, shipping, etc."
     link: "https://github.com/OskWeb/modulo4.1_react_avanzado_desafio_pedidos"
     languages:
       - language: "TypeScript"
       - language: "CSS"
+      - language: "React"
+  - title: "ToDo tasks list"
+    description: "Application that allows users to manage a to-do list"
+    link: "https://github.com/OskWeb/modulo4.3_vue_laboratorio"
+    languages:
+      - language: "Typescript"
+      - language: "CSS"
+      - language: "Vue"
+      - language: "Nuxt"
 ---

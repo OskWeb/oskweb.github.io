@@ -18,6 +18,7 @@
     --vue-skill-color: #95ff00;
     --jest-skill-color: #d845ce;
     --astro-skill-color: #b33257;
+    --nuxt-skill-color: #00DC82;
 }
 
 * {
@@ -335,6 +336,9 @@ svg {
 }
 .astro {
     background-color: var(--astro-skill-color);
+}
+.nuxt {
+    background-color: var(--nuxt-skill-color);
 }
 
 .header .divAnimated {
