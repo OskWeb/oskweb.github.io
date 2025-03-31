@@ -37,4 +37,12 @@ projects:
       - language: "CSS"
       - language: "Vue"
       - language: "Nuxt"
+  - title: "Photo gallery"
+    description: "Gallery with different functionalities, such as a player, increasing or decreasing the size of the selected photo, etc."
+    link: "https://github.com/OskWeb/modulo4.3_vue_laboratorio"
+    languages:
+      - language: "TypeScript"
+      - language: "HTML"
+      - language: "SCSS"
+      - language: "Angular"
 ---
