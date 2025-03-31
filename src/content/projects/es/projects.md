@@ -33,7 +33,7 @@ projects:
     description: "Aplicación que permite a los usuarios gestionar una lista de tareas pendientes."
     link: "https://github.com/OskWeb/modulo4.3_vue_laboratorio"
     languages:
-      - language: "Typescript"
+      - language: "TypeScript"
       - language: "CSS"
       - language: "Vue"
       - language: "Nuxt"

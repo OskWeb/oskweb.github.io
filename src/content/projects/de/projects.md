@@ -30,7 +30,7 @@ projects:
     description: "Anwendung, mit der Benutzer eine Aufgabenliste verwalten können"
     link: "https://github.com/OskWeb/modulo4.3_vue_laboratorio"
     languages:
-      - language: "Typescript"
+      - language: "TypeScript"
       - language: "CSS"
       - language: "Vue"
       - language: "Nuxt"
