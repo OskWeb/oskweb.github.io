@@ -339,7 +339,7 @@ svg {
     background-color: var(--astro-skill-color);
 }
 .react {
-    background-color: var(-);
+    background-color: var(--react-skill-color);
 }
 .nuxt {
     background-color: var(--nuxt-skill-color);
