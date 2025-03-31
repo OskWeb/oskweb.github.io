@@ -36,7 +36,7 @@ projects:
       - language: "Nuxt"
   - title: "Fotogalerie"
     description: "Galerie mit verschiedenen Funktionen, wie z. B. einem Player, Vergrößern oder Verkleinern des ausgewählten Fotos usw."
-    link: "https://github.com/OskWeb/modulo4.3_vue_laboratorio"
+    link: "https://github.com/OskWeb/modulo4.2_angular_laboratorio"
     languages:
       - language: "TypeScript"
       - language: "HTML"

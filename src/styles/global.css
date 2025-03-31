@@ -16,10 +16,10 @@
     --laravel-skill-color: #45d8d3;
     --angular-skill-color: #ffed9c;
     --vue-skill-color: #95ff00;
-    --jest-skill-color: #d845ce;
     --astro-skill-color: #b33257;
     --nuxt-skill-color: #00DC82;
     --react-skill-color: #58C4DC;
+    --scss-skill-color: #d845ce;
 }
 
 * {
@@ -343,6 +343,9 @@ svg {
 }
 .nuxt {
     background-color: var(--nuxt-skill-color);
+}
+.scss {
+    background-color: var(--scss-skill-color);
 }
 
 .header .divAnimated {

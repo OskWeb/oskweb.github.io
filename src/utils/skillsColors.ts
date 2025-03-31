@@ -14,7 +14,8 @@ export const skillsColorsCollection = [
   "Vue",
   "Jest",
   "Astro",
-  "Nuxt"
+  "Nuxt",
+  "SCSS",
 ];
 
 export const skillColorAssociate = (skill: string) => {
